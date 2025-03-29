@@ -25,6 +25,7 @@ export default async function login(req, res) {
     return res.status(400).json({ mensage: "Invalid password."})
   }
 
+  // send jwt on response
   try {
     const secret = process.env.SECRET
     const token = jwt.sign({ user: user.id}, secret)
