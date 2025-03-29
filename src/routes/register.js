@@ -22,9 +22,8 @@ export default async function register(req, res) {
   // register user
   try {
     connection.query(`INSERT INTO user (email, password) VALUES ('${email}', '${passwordHash}')`)
+    res.status(201).json({ mensage: "User Created!"})
   } catch (error) {
     res.status(500).json({ mensage: "There was an Internal Server Error."})
   } 
-
-  res.status(201).json({ mensage: "User Created!"})
 }
