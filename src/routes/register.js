@@ -10,9 +10,8 @@ export default async function register(req, res) {
   }
 
   // check if user already exists
-  const [ user ] = await connection.query(`SELECT * FROM user WHERE email = '${email}'`)
-  console.log(user)
-  if (user != '[]') {
+  const [ [ user ] ] = await connection.query(`SELECT * FROM user WHERE email = '${email}'`)
+  if (user) {
     return res.status(400).json({ mensage: "User already exists."})
   }
 
